@@ -1,0 +1,8 @@
+model:
+  iterations: 1000
+  depth: 6
+  loss_function: 'RMSE'
+
+paths:
+  raw_data: "data/raw/cars.db"
+  model_path: "models/car_price_model_v1.cbm"
