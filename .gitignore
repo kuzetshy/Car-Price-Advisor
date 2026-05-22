@@ -1,8 +1,21 @@
+# Данные (базы и выгрузки)
 *.csv
 *.db
+
+# Виртуальное окружение и кэш
 .venv/
-catboost_info/
 __pycache__/
 *.py[cod]
+
+# Логи обучения CatBoost (в корне и в репортах)
+catboost_info/
+reports/catboost_info/
+
+# Большие бинарные файлы моделей (не пушим веса на гитхаб)
+*.cbm
+*.pkl
+
+# Мусор операционных систем и IDE
 .DS_Store
 .vscode/
+.ipynb_checkpoints/
