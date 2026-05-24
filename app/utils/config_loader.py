@@ -1,9 +1,20 @@
 import yaml
+import os
 
-def load_config(config_path="config/settings.yaml"):
-    with open(config_path, "r") as f:
-        return yaml.safe_load(f)
+class ConfigLoader:
+    """Утилита для загрузки настроек из YAML файла."""
+    
+    def __init__(self, config_path: str = "config/settings.yaml"):
+        self.config_path = config_path
+        self.config = self._load_config()
 
-# Теперь в любом месте проекта:
-# config = load_config()
-# print(config['model']['iterations'])
+    def _load_config(self) -> dict:
+        if not os.path.exists(self.config_path):
+            raise FileNotFoundError(f"❌ Файл конфигурации не найден: {self.config_path}")
+            
+        with open(self.config_path, "r", encoding="utf-8") as f:
+            return yaml.safe_load(f)
+
+    def get(self, section: str) -> dict:
+        """Получить определенную секцию конфига."""
+        return self.config.get(section, {})

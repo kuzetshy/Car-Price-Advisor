@@ -6,6 +6,7 @@
 .venv/
 __pycache__/
 *.py[cod]
+*.pyc
 
 # Логи обучения CatBoost (в корне и в репортах)
 catboost_info/

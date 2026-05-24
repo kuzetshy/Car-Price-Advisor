@@ -1,8 +1,25 @@
+# Настройки путей
+paths:
+  raw_db: "data/raw/cars.db"
+  cleaned_csv: "data/cleaned/cars_ready.csv"
+  model_dir: "models"
+  model_name: "catboost_car_model_v2.cbm"
+  train_log_dir: "reports/catboost_info"
+
+# Настройки предобработки
+preprocessing:
+  current_year: 2026
+  n_clusters: 5
+  random_state: 42
+  price_min: 30000
+  price_max: 5000000
+
+# Настройки обучения CatBoost
 model:
   iterations: 1000
+  learning_rate: 0.1
   depth: 6
-  loss_function: 'RMSE'
-
-paths:
-  raw_data: "data/raw/cars.db"
-  model_path: "models/car_price_model_v1.cbm"
+  eval_metric: "RMSE"
+  random_seed: 42
+  verbose: 100
+  early_stopping_rounds: 50
