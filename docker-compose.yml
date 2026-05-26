@@ -4,11 +4,11 @@ services:
     container_name: car_price_db
     restart: always
     environment:
-      POSTGRES_USER: car_user
-      POSTGRES_PASSWORD: car_secure_password
-      POSTGRES_DB: car_price_advisor
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     ports:
-      - "5433:5432"  # <-- Поменяли внешний порт на 5433
+      - "5433:5432"
     volumes:
       - pg_data:/var/lib/postgresql/data
 
