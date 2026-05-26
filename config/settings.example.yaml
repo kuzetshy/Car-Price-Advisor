@@ -23,3 +23,7 @@ model:
   random_seed: 42
   verbose: 100
   early_stopping_rounds: 50
+
+# Здесь мы оставляем структуру, но скрываем пароль
+database:
+  url: "postgresql://YOUR_LOGIN:YOUR_PASSWORD@localhost:5433/car_price_advisor"
