@@ -1,6 +1,12 @@
 # Данные (базы и выгрузки)
-*.csv
+
+data/
+.DS_Store
 *.db
+*.csv
+
+config/settings.yaml
+settings.yaml
 
 # Виртуальное окружение и кэш
 .venv/
@@ -20,3 +26,6 @@ reports/catboost_info/
 .DS_Store
 .vscode/
 .ipynb_checkpoints/
+
+# Docker
+.env

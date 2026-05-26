@@ -49,11 +49,17 @@ if __name__ == "__main__":
     paths = cfg.get("paths")
     
     # 2. Загрузка и предобработка
-    loader = CarDataLoader(db_path=paths["raw_db"])
+    loader = CarDataLoader()
     preprocessor = CarPreprocessor(current_year=cfg.get("preprocessing")["current_year"])
     
     data = loader.load_raw_data()
+
+    print(f"🔎 Очистка данных... Было: {len(data)} записей.")
+
     data_clean = preprocessor.fit_transform(data)
+
+    print(f"✅ Очистка завершена. Осталось: {len(data_clean)} записей. Удалено: {len(data) - len(data_clean)}")
+
     loader.save_data(data_clean, paths["cleaned_csv"])
     
     # 3. Обучение

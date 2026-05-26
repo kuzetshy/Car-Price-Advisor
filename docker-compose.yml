@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: car_price_db
+    restart: always
+    environment:
+      POSTGRES_USER: car_user
+      POSTGRES_PASSWORD: car_secure_password
+      POSTGRES_DB: car_price_advisor
+    ports:
+      - "5433:5432"  # <-- Поменяли внешний порт на 5433
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+volumes:
+  pg_data:

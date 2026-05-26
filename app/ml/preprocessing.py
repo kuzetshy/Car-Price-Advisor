@@ -4,23 +4,33 @@ import sqlite3
 import os
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
+from app.database.session import engine
+
+import os
+import pandas as pd
+
+# Импортируем наш движок БД для подключения к PostgreSQL
+from app.database.session import engine
 
 class CarDataLoader:
     """Отвечает исключительно за загрузку и сохранение данных."""
     
-    def __init__(self, db_path: str):
-        self.db_path = db_path
+    def __init__(self):
+        # Нам больше не нужен db_path, так как база подключена глобально через engine
+        pass
 
     def load_raw_data(self) -> pd.DataFrame:
-        if not os.path.exists(self.db_path):
-            raise FileNotFoundError(f"❌ База данных не найдена: {self.db_path}")
-        
-        with sqlite3.connect(self.db_path) as conn:
-            df = pd.read_sql("SELECT * FROM cars", conn)
-        print(f"📥 Загружено сырых записей: {len(df)}")
-        return df
+        print("📥 Подключение к PostgreSQL и загрузка данных...")
+        try:
+            # pandas делает всю магию сам: открывает соединение, выполняет SQL и закрывает
+            df = pd.read_sql("SELECT * FROM cars", con=engine)
+            print(f"✅ Загружено сырых записей: {len(df)}")
+            return df
+        except Exception as e:
+            raise ConnectionError(f"❌ Ошибка при загрузке данных из БД: {e}")
 
     def save_data(self, df: pd.DataFrame, output_path: str):
+        # Оставляем как было: этот метод отлично сохраняет очищенный датасет
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
         df.to_csv(output_path, index=False)
         print(f"💾 Данные сохранены в: {output_path}")
