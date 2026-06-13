@@ -14,6 +14,9 @@ The project is built using Object-Oriented Programming (OOP) principles and clea
 
 ## 🏗️ Architecture & Project Structure
 
+## 🏗️ Project Structure
+
+```text
 Car-Price-Advisor/
 ├── app/                       # Main application package
 │   ├── api/                   # Web interface layer (FastAPI endpoints and schemas)
@@ -51,10 +54,9 @@ Car-Price-Advisor/
 └── requirements.txt           # Managed project dependencies list
 
 
-
 🗺️ Project Roadmap
-[ ] Phase 1: Architecture & OOP Refactoring (Rebuilt project layout, implemented classes for loaders and preprocessors)
-[ ] Phase 2: PostgreSQL Migration & Docker Setup (Moved from SQLite, containerized database, integrated SQLAlchemy)
+[x] Phase 1: Architecture & OOP Refactoring (Rebuilt project layout, implemented classes for loaders and preprocessors)
+[x] Phase 2: PostgreSQL Migration & Docker Setup (Moved from SQLite, containerized database, integrated SQLAlchemy)
 [ ] Phase 3: Code Consolidation & Automated Ingestion (Transfer remaining inference/advisor logic from notebooks, set up Cron for the scraper)
 [ ] Phase 4: Production Model Tracking (Resolve model binary deployment limits on Git)
 [ ] Phase 5: FastAPI Deployment (Build endpoints for /predict and /advisor)
